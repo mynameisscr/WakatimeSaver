@@ -4,7 +4,7 @@ import com.beust.klaxon.Klaxon
 import ru.scratty.http.HttpGet
 import ru.scratty.http.HttpGetException
 import ru.scratty.http.HttpUrl
-import ru.scratty.toWakatimeDate
+import ru.scratty.toISOLocalDateString
 import ru.scratty.wakatime.models.WakatimeSummariesHolder
 import java.time.LocalDate
 
@@ -29,8 +29,8 @@ class Wakatime(private val apiKey: String) {
             path = SUMMARIES_PATH
             parameters = mapOf(
                 API_KEY_PARAMETER to apiKey,
-                START_PARAMETER to start.toWakatimeDate(),
-                END_PARAMETER to end.toWakatimeDate())
+                START_PARAMETER to start.toISOLocalDateString(),
+                END_PARAMETER to end.toISOLocalDateString())
         }
 
         val get = HttpGet(url)
