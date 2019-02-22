@@ -22,6 +22,7 @@ class Main {
             }
 
             val saver = WakatimeSaver(apiKey, Period(minutes = 15))
+            saver.saveLastTwoWeeks()
             saver.start()
         }
     }

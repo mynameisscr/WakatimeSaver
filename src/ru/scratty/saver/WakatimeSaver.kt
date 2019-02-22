@@ -39,6 +39,15 @@ class WakatimeSaver(
         timer.cancel()
     }
 
+    fun saveLastTwoWeeks() {
+        val start = LocalDate.now().minusDays(13)
+        val end = LocalDate.now()
+
+        wakatime.parseSummaries(start, end).listSummaries.forEach {
+            dbService.addSummaries(Summaries.create(it))
+        }
+    }
+
     private fun parse(): WakatimeSummariesHolder {
         val day = LocalDate.now()
         if (!day.isEqual(lastSavedDay)) {
